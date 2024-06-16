@@ -47,7 +47,7 @@ public class Controller extends HttpServlet {
 			break;
 			
 		case "/completion":
-			out.print("Registered Successfully!!!");
+			completion(request, response);
 			break;
 
 		default:
@@ -82,5 +82,10 @@ public class Controller extends HttpServlet {
 	protected void welcome(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		out.print("Welcome, " + request.getParameter("user"));
+	}
+	
+	protected void completion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		out.print("<h1>Thanks for registering into our website, " + request.getParameter("name") + "!</h1>");
 	}
 }
