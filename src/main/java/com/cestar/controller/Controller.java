@@ -36,10 +36,10 @@ public class Controller extends HttpServlet {
 		
 		switch(url) {
 		case "/login":
-			out.print("Acessing login from the controller");
+			loginPage(request,response);
 			break;
 		case "/register":
-			out.print("Acessing register page");
+			registerPage(request,response);
 			break;
 //			
 //		case "/error":
@@ -61,7 +61,16 @@ public class Controller extends HttpServlet {
 	
 	protected void error(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = request.getRequestDispatcher("error-page.jsp"); //error.jsp was throwing error 
-		System.out.println(request);
+		rd.forward(request, response);		
+	}
+	
+	protected void registerPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
+		rd.forward(request, response);		
+	}
+	
+	protected void loginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 		rd.forward(request, response);		
 	}
 	
