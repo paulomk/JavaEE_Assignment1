@@ -41,10 +41,15 @@ public class Controller extends HttpServlet {
 		case "/register":
 			registerPage(request,response);
 			break;
-//			
-//		case "/error":
-//			out.print("Error");
-//			break;
+			
+		case "/welcome":
+			welcome(request, response);
+			break;
+			
+		case "/completion":
+			out.print("Registered Successfully!!!");
+			break;
+
 		default:
 			error(request, response);
 		}
@@ -74,4 +79,8 @@ public class Controller extends HttpServlet {
 		rd.forward(request, response);		
 	}
 	
+	protected void welcome(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		out.print("Welcome, " + request.getParameter("user"));
+	}
 }
